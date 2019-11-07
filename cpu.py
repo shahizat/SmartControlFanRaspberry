@@ -14,13 +14,13 @@ def get_temp():
 try:
     GPIO.setwarnings(False)                 # Disable GPIO warnings
     tempOn = 40                             # Turn on fan, when CPU temperature reaches 40degC
-    controlPin = 14                         # Control GPIO 
-    pinState = False                        # Actual state of fan
+    controlPin = 14                         # Control GPIO pin 
+    pinState = False                        # Actual status of fan
     GPIO.setmode(GPIO.BCM)                  # Set numbering system to BCM
     GPIO.setup(controlPin, GPIO.OUT, initial=0) # Set control GPIO to OUTPUT mode
     while True:
         temp = get_temp()
-        if temp >= tempOn and not pinState or temp =< tempOn - 10 and pinState:
+        if temp >= tempOn and not pinState or temp <= tempOn - 10 and pinState:
                 pinState = not pinState         # Change the pin status 
                 GPIO.output(controlPin, pinState) # Set a new status for the control pin
         conn = request.urlopen(baseURL + '&field1=%s' % (temp))
