@@ -4,7 +4,7 @@ from urllib import request # Import a library for working with URLs
 from re import findall # Import a regex library
 from time import sleep #Import a library to work with time
 from subprocess import check_output # Import the library for working with subprocesses
-myAPI = 'UNYFNTJUP797NRF7' # Enter Your API key here
+myAPI = '###################' # Enter Your API key here
 baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI # URL where we will send the data
 
 def get_temp():
