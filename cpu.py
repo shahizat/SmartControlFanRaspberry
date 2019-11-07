@@ -5,11 +5,11 @@ from re import findall # Import a regex library
 from time import sleep #Import a library to work with time
 from subprocess import check_output # Import the library for working with subprocesses
 myAPI = 'UNYFNTJUP797NRF7' # Enter Your API key here
-baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI # URL where we will send the data, Don't change it
+baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI # URL where we will send the data
 
 def get_temp():
-    temp = check_output(["vcgencmd","measure_temp"]).decode()    # Perform temperature request
-    temp = float(findall('\d+\.\d+', temp)[0])                   # Using regular expression, we get the temperature value from command line
+    temp = check_output(["vcgencmd","measure_temp"]).decode()    # Using subprocess.check_output() assign the temperature of Raspberry CPU to temp variable
+    temp = float(findall('\d+\.\d+', temp)[0])                   # Using regular expression, we get the temperature value
     return(temp)
 try:
     GPIO.setwarnings(False)                 # Disable GPIO warnings
